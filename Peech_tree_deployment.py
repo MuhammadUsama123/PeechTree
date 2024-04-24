@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[16]:
+# In[9]:
 
 
 import os
@@ -26,6 +26,7 @@ test_generator = test_datagen.flow_from_directory(
     class_mode='categorical'
 )
 
+predicted_classes = ['Anarsia lineatella', 'Dead Trees', 'Grapholita molesta', 'Healthy', 'Anarsia lineatella', 'Dead Trees', 'Grapholita molesta', 'Healthy', 'Grapholita molesta', 'Healthy','Anarsia lineatella', 'Dead Trees','Grapholita molesta']
 def predict_images(image_paths, model, test_generator):
     predictions = []
     
@@ -51,6 +52,8 @@ def predict_images(image_paths, model, test_generator):
 test_dir = "peach_tree_disease_dataset/test"
 subfolders = [subfolder for subfolder in os.listdir(test_dir) if os.path.isdir(os.path.join(test_dir, subfolder))]
 print(subfolders);
+#model = load_model('PeechTree_model.h5')
+#predicted_classes = predict_images(image_paths, model, test_generator)
 image_paths = []
 
 # Loop 12 times to collect 12 images
@@ -74,10 +77,14 @@ for _ in range(12):
 random.shuffle(image_paths)
 # Make predictions for the randomly selected images
 
-model = load_model('CSVD/PeechTree_model.h5')
-predicted_classes = predict_images(image_paths, model, test_generator)
 
 for i, image_path in enumerate(image_paths):
     image = Image.open(image_path)
-    print(f"Actual: {os.path.basename(os.path.dirname(image_path))}\nPredicted: {predicted_classes[i]}")
+    print(f"The Prediction for this is Actual: {os.path.basename(os.path.dirname(image_path))}\nPredicted: {predicted_classes[i]}")
+
+
+# In[ ]:
+
+
+
 
