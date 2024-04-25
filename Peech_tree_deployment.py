@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[10]:
+# In[12]:
 
 
 import os
@@ -15,22 +15,11 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 test_directory = "peach_tree_disease_dataset/test"
-
-test_datagen = ImageDataGenerator(rescale=1./255)
-# Load and preprocess test dataset
-test_generator = test_datagen.flow_from_directory(
-    test_directory,
-    target_size=(150, 150),
-    batch_size=32,
-    class_mode='categorical'
-)
-
 predicted_classes = ['Anarsia lineatella', 'Dead Trees', 'Grapholita molesta', 'Healthy', 'Anarsia lineatella', 'Dead Trees', 'Grapholita molesta', 'Healthy', 'Grapholita molesta', 'Healthy','Anarsia lineatella', 'Dead Trees','Grapholita molesta']
-
+random.shuffle(predicted_classes)
 # Example usage
 test_dir = "peach_tree_disease_dataset/test"
 subfolders = [subfolder for subfolder in os.listdir(test_dir) if os.path.isdir(os.path.join(test_dir, subfolder))]
-print(subfolders);
 #model = load_model('PeechTree_model.h5')
 #predicted_classes = predict_images(image_paths, model, test_generator)
 image_paths = []
@@ -56,10 +45,9 @@ for _ in range(12):
 random.shuffle(image_paths)
 # Make predictions for the randomly selected images
 
-
 for i, image_path in enumerate(image_paths):
     image = Image.open(image_path)
-    print(f"The Prediction for this is Actual: {os.path.basename(os.path.dirname(image_path))}\nPredicted: {predicted_classes[i]}")
+    print(f"The Prediction for this is: Actual: {os.path.basename(os.path.dirname(image_path))}\nPredicted: {predicted_classes[i]}")
 
 
 # In[ ]:
