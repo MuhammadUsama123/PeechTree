@@ -1,18 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[12]:
+# In[15]:
 
 
 import os
 import random
 from PIL import Image
 import numpy as np
-
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
-
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 test_directory = "peach_tree_disease_dataset/test"
 predicted_classes = ['Anarsia lineatella', 'Dead Trees', 'Grapholita molesta', 'Healthy', 'Anarsia lineatella', 'Dead Trees', 'Grapholita molesta', 'Healthy', 'Grapholita molesta', 'Healthy','Anarsia lineatella', 'Dead Trees','Grapholita molesta']
